@@ -1,0 +1,60 @@
+<mat-card class="wrapper">
+  <mat-card-header>
+    <div mat-card-avatar class="example-header-image"></div>
+    <mat-card-title class="body-title">Symfony Repositories</mat-card-title>
+  </mat-card-header>
+  <mat-card-actions>
+    <div class="disclaimer-section">
+      <div class="item-form">
+        <div class="select-back">
+          <mat-form-field>
+            <mat-label>Switch Backend</mat-label>
+            <mat-select [(value)]="server" (selectionChange)="processData()">
+              <mat-option *ngFor="let backend of backends" [value]="backend.url">
+                {{backend.tech}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+      </div>
+      <div class="item-form">
+        <button mat-raised-button [disabled]="loading" type="submit" class="btn btn-center btn-csv"
+          (click)="export()">Export to CSV</button>
+      </div>
+    </div>
+  </mat-card-actions>
+  <mat-card-content>
+    <div *ngIf="loading" class="spinner">
+      <div><mat-spinner></mat-spinner></div>
+    </div>
+    <table *ngIf="!loading" mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+      <ng-container matColumnDef="full_name">
+        <th mat-header-cell *matHeaderCellDef> REPOSITORIE </th>
+        <td mat-cell *matCellDef="let element"> {{element.full_name}} </td>
+      </ng-container>
+      <ng-container matColumnDef="avatar">
+        <th mat-header-cell *matHeaderCellDef> AVATAR </th>
+        <td mat-cell *matCellDef="let element"> <img class="img-avt" src="{{ element.avatar }}"> </td>
+      </ng-container>
+      <ng-container matColumnDef="owner">
+        <th mat-header-cell *matHeaderCellDef> OWNER </th>
+        <td mat-cell *matCellDef="let element"> {{element.owner}} </td>
+      </ng-container>
+      <ng-container matColumnDef="forks">
+        <th mat-header-cell *matHeaderCellDef> FORKS </th>
+        <td mat-cell *matCellDef="let element"> {{element.forks}} </td>
+      </ng-container>
+      <ng-container matColumnDef="open_issues">
+        <th mat-header-cell *matHeaderCellDef> OPEN ISSUES </th>
+        <td mat-cell *matCellDef="let element"> {{element.open_issues}} </td>
+      </ng-container>
+      <ng-container matColumnDef="stargazers">
+        <th mat-header-cell *matHeaderCellDef> STARGAZERS </th>
+        <td mat-cell *matCellDef="let element"> {{element.stargazers}} </td>
+      </ng-container>
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+
+  </mat-card-content>
+</mat-card>

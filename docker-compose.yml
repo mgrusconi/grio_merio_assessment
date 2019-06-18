@@ -1,0 +1,26 @@
+version: "3"
+
+services:
+  backend_node:
+    build: ./back_node/
+    container_name: giro_merio_back_node
+    ports:
+      - "3000:80"
+    volumes:
+      - ./back_node/:/usr/src/app
+
+  backend_php:
+    build: ./back_php/
+    container_name: giro_merio_back_php
+    ports:
+      - "8000:80"
+    volumes:
+      - ./back_php/:/var/www/app
+  
+  front:
+    build: ./front/
+    container_name: giro_merio_front
+    ports:
+      - "4200:4200"
+    volumes:
+      - ./front/:/usr/src/app

@@ -1,0 +1,4 @@
+application_default_github:
+    path:     /github/{profile}/{type}
+    defaults: { _controller: SomeBundle:Default:getgithubresources }
+    methods: GET

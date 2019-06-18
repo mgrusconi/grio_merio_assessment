@@ -1,0 +1,32 @@
+# Symfony 3.4
+/build
+/node_modules
+/varios
+/vendor
+/.idea
+/.vscode
+/.Dockerfile.swp
+composer.lock
+npm-debug.log
+package-lock.json
+phpunit.xml
+yarn-error.log
+yarn.lock
+
+# Bin, cache, session files and logs
+/bin/*
+!bin/console
+!bin/symfony_requirements
+/var/cache/*
+!var/cache/.gitkeep
+/var/jwt/*
+!var/jwt/.gitkeep
+/var/logs/*
+!var/logs/.gitkeep
+/var/sessions/*
+!var/sessions/.gitkeep
+
+# Parameters / cache
+/app/config/parameters.yml
+/app/bootstrap.php.cache
+/var/bootstrap.php.cache
